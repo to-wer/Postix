@@ -1,0 +1,55 @@
+@model Domain
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section PageHeader {
+    <div class="page-header d-print-none">
+        <div class="container-xl">
+            <div class="row g-2 align-items-center">
+                <div class="col">
+                    <!-- Page pre-title -->
+                    <div class="page-pretitle">
+                        Create
+                    </div>
+                    <h2 class="page-title">
+                        Domains
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<form class="card" asp-action="Create">
+    <div class="card-header">
+        <h4 class="card-title">Create</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="DomainName" for="DomainName">Domain Name</label>
+            </div>
+            <div class="col-md-8 form-group">
+                <input type="text" class="form-control" asp-for="DomainName" id="DomainName" />
+                <span asp-validation-for="DomainName"></span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-end">
+        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

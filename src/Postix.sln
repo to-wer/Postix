@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postix", "Postix\Postix.csproj", "{210C0401-7C0A-432F-9076-A7537D7EC74F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postix.Tests", "Postix.Tests\Postix.Tests.csproj", "{2436B537-DA35-4114-AF75-B039C560B626}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{210C0401-7C0A-432F-9076-A7537D7EC74F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{210C0401-7C0A-432F-9076-A7537D7EC74F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{210C0401-7C0A-432F-9076-A7537D7EC74F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{210C0401-7C0A-432F-9076-A7537D7EC74F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2436B537-DA35-4114-AF75-B039C560B626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2436B537-DA35-4114-AF75-B039C560B626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2436B537-DA35-4114-AF75-B039C560B626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2436B537-DA35-4114-AF75-B039C560B626}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

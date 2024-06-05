@@ -1,0 +1,129 @@
+@model IEnumerable<Account>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header d-print-none">
+        <div class="container-xl">
+            <div class="row g-2 align-items-center">
+                <div class="col">
+                    <!-- Page pre-title -->
+                    @* <div class="page-pretitle"> *@
+                    @*     Overview *@
+                    @* </div> *@
+                    <h2 class="page-title">
+                        Accounts
+                    </h2>
+                </div>
+                <!-- Page title actions -->
+                <div class="col-auto ms-auto d-print-none">
+                    <div class="btn-list">
+                        <span class="d-none d-sm-inline">
+                            <a asp-action="Create" class="btn">
+                                New account
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="card">
+    <div class="card-body">
+        <div id="table-default" class="table-responsive">
+            <table class="table table-striped" id="table1" aria-label="List of accounts">
+                <thead>
+                <tr>
+                    <th>
+                        <button class="table-sort" data-sort="sort-username">
+                            @Html.DisplayNameFor(model => model.Username)
+                        </button>
+                    </th>
+                    <th>
+                        <button class="table-sort" data-sort="sort-domain">
+                            @Html.DisplayNameFor(model => model.Domain)
+                        </button>
+                    </th>
+                    <th>
+                        <button class="table-sort" data-sort="sort-hashedPassword">
+                            @Html.DisplayNameFor(model => model.HashedPassword)
+                        </button>
+                    </th>
+                    <th>
+                        <button class="table-sort" data-sort="sort-quota">
+                            @Html.DisplayNameFor(model => model.Quota)
+                        </button>
+                    </th>
+                    <th>
+                        <button class="table-sort" data-sort="sort-enabled">
+                            @Html.DisplayNameFor(model => model.Enabled)
+                        </button>
+                    </th>
+                    <th>
+                        <button class="table-sort" data-sort="sort-sendOnly">
+                            @Html.DisplayNameFor(model => model.SendOnly)
+                        </button>
+                    </th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody class="table-tbody">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="sort-username">
+                            @Html.DisplayFor(modelItem => item.Username)
+                        </td>
+                        <td class="sort-domain">
+                            @Html.DisplayFor(modelItem => item.Domain)
+                        </td>
+                        <td class="sort-hashedPassword">
+                            @if (!string.IsNullOrEmpty(item.HashedPassword) && item.HashedPassword.Length >= 20)
+                            {
+                                @item.HashedPassword[..20]
+                            }
+                            else
+                            {
+                                @item.HashedPassword
+                            }
+                        </td>
+                        <td class="sort-quota">
+                            @Html.DisplayFor(modelItem => item.Quota)
+                        </td>
+                        <td class="sort-enabled">
+                            @Html.DisplayFor(modelItem => item.Enabled)
+                        </td>
+                        <td class="sort-sendOnly">
+                            @Html.DisplayFor(modelItem => item.SendOnly)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/tabler/libs/list.js/dist/list.js" asp-append-version="true"></script>
+
+    <script>
+          document.addEventListener("DOMContentLoaded", function() {
+          const list = new List('table-default', {
+          	sortClass: 'table-sort',
+          	listClass: 'table-tbody',
+          	valueNames: [ 'sort-username', 'sort-domain', 'sort-hashedPassword', 'sort-quota', 'sort-enabled', 'sort-sendOnly' ]
+          });
+          })
+        </script>
+}

@@ -1,0 +1,113 @@
+@model IEnumerable<Alias>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header d-print-none">
+        <div class="container-xl">
+            <div class="row g-2 align-items-center">
+                <div class="col">
+                    <!-- Page pre-title -->
+                    @* <div class="page-pretitle"> *@
+                    @*     Overview *@
+                    @* </div> *@
+                    <h2 class="page-title">
+                        Aliases
+                    </h2>
+                </div>
+                <!-- Page title actions -->
+                <div class="col-auto ms-auto d-print-none">
+                    <div class="btn-list">
+                        <span class="d-none d-sm-inline">
+                            <a asp-action="Create" class="btn">
+                                New alias
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="card">
+                <div class="card-body">
+                    <div id="table-default" class="table-responsive">
+                        <table class="table table-striped" id="table1" aria-label="List of aliases">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <button class="table-sort" data-sort="sort-sourceUsername">
+                                    @Html.DisplayNameFor(model => model.SourceUsername)
+                                    </button>
+                                </th>
+                                <th>
+                                    <button class="table-sort" data-sort="sort-sourceDomain">
+                                    @Html.DisplayNameFor(model => model.SourceDomain)
+                                    </button>
+                                </th>
+                                <th>
+                                <button class="table-sort" data-sort="sort-destinationUsername">
+                                    @Html.DisplayNameFor(model => model.DestinationUsername)
+                                    </button>
+                                </th>
+                                <th>
+                                <button class="table-sort" data-sort="sort-destinationDomain">
+                                    @Html.DisplayNameFor(model => model.DestinationDomain)
+                                    </button>
+                                </th>
+                                <th>
+                                <button class="table-sort" data-sort="sort-enabled">
+                                    @Html.DisplayNameFor(model => model.Enabled)
+                                    </button>
+                                </th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody class="table-tbody">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="sort-sourceUsername">
+                                        @Html.DisplayFor(modelItem => item.SourceUsername)
+                                    </td>
+                                    <td class="sort-sourceDomain">
+                                        @Html.DisplayFor(modelItem => item.SourceDomain)
+                                    </td>
+                                    <td class="sort-destinationUsername">
+                                        @Html.DisplayFor(modelItem => item.DestinationUsername)
+                                    </td>
+                                    <td class="sort-destinationDomain">
+                                        @Html.DisplayFor(modelItem => item.DestinationDomain)
+                                    </td>
+                                    <td class="sort-enabled">
+                                        @Html.DisplayFor(modelItem => item.Enabled)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+@section Scripts {
+    <script src="~/tabler/libs/list.js/dist/list.min.js" asp-append-version="true"></script>
+    
+    <script>
+          document.addEventListener("DOMContentLoaded", function() {
+          const list = new List('table-default', {
+          	sortClass: 'table-sort',
+          	listClass: 'table-tbody',
+          	valueNames: [ 'sort-sourceUsername', 'sort-sourceDomain', 'sort-destinationUsername', 'sort-destinationDomain', 'sort-enabled' ]
+          });
+          })
+        </script>
+}

@@ -1,0 +1,82 @@
+@model IEnumerable<Domain>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header d-print-none">
+        <div class="container-xl">
+            <div class="row g-2 align-items-center">
+                <div class="col">
+                    <!-- Page pre-title -->
+                    @* <div class="page-pretitle"> *@
+                    @*     Overview *@
+                    @* </div> *@
+                    <h2 class="page-title">
+                        Domains
+                    </h2>
+                </div>
+                <!-- Page title actions -->
+                <div class="col-auto ms-auto d-print-none">
+                    <div class="btn-list">
+                        <span class="d-none d-sm-inline">
+                            <a asp-action="Create" class="btn">
+                                New domain
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+        <div class="card">
+            <div class="card-body">
+                <div id="table-default" class="table-responsive">
+                    <table class="table table-striped" id="table1" aria-label="All domains">
+                        <thead>
+                        <tr>
+                            <th>
+                                <button class="table-sort" data-sort="sort-domainName">
+                                @Html.DisplayNameFor(model => model.DomainName)
+                                </button>
+                            </th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-tbody">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="sort-domainName">
+                                    @Html.DisplayFor(modelItem => item.DomainName)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+@section Scripts {
+    <script src="~/tabler/libs/list.js/dist/list.js" asp-append-version="true"></script>
+    
+    <script>
+          document.addEventListener("DOMContentLoaded", function() {
+          const list = new List('table-default', {
+          	sortClass: 'table-sort',
+          	listClass: 'table-tbody',
+          	valueNames: [ 'sort-domainName'          	]
+          });
+          })
+        </script>
+}

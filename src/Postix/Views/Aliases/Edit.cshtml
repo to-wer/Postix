@@ -1,0 +1,63 @@
+@model Postix.Models.Aliases.AliasEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Alias</h4>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id"/>
+            <div class="form-group">
+                <label class="control-label">
+                    Source Username
+                    <input asp-for="SourceUsername" class="form-control"/>
+                </label>
+                <span asp-validation-for="SourceUsername" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">
+                    Source Domain
+                    <select asp-for="SourceDomain" asp-items="Model.Domains" class="form-control"></select>
+                </label>
+                <span asp-validation-for="SourceDomain" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationUsername" class="control-label">
+                    Destination Username
+                    <input asp-for="DestinationUsername" class="form-control"/>
+                </label>
+                <span asp-validation-for="DestinationUsername" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationDomain" class="control-label">
+                    Destination Domain
+                    <select asp-for="DestinationDomain" asp-items="Model.Domains" class="form-control"></select>
+                </label>
+                <span asp-validation-for="DestinationDomain" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Enabled"/> @Html.DisplayNameFor(model => model.Enabled)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

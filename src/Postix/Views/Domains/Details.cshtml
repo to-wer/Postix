@@ -1,0 +1,41 @@
+@model Domain
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-heading">
+    <h3>Domains</h3>
+</div>
+
+<div class="page-content">
+    <section>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.DomainName)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.DomainName)
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

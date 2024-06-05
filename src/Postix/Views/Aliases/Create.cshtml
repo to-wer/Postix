@@ -1,0 +1,82 @@
+@model Postix.Models.Aliases.AliasCreateViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section PageHeader {
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle">
+                    Create
+                </div>
+                <h2 class="page-title">
+                    Aliases
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+<form class="card" asp-action="Create">
+    <div class="card-header">
+        <h4 class="card-title">Create</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="SourceUsername" for="SourceUsername">Source Username</label>
+            </div>
+            <div class="col-md-8 form-group">
+                <input type="text" class="form-control" asp-for="SourceUsername" id="SourceUsername" />
+                <span asp-validation-for="SourceUsername"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="SourceDomain" for="SourceDomain">Source Domain</label>
+            </div>
+            <div class="col-md-8 form-group">
+                <select asp-for="SourceDomain" asp-items="Model.Domains" class="form-control" id="SourceDomain"></select>
+                <span asp-validation-for="SourceUsername"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="DestinationUsername" for="DestinationUsername">Destination Username</label>
+            </div>
+            <div class="col-md-8 form-group">
+                <input type="text" class="form-control" asp-for="DestinationUsername" id="DestinationUsername" />
+                <span asp-validation-for="DestinationUsername"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="DestinationDomain" for="DestinationDomain">Destination Domain</label>
+            </div>
+            <div class="col-md-8 form-group">
+                <select asp-for="DestinationDomain" asp-items="Model.Domains" class="form-control" id="DestinationDomain"></select>
+                <span asp-validation-for="SourceUsername"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Enabled" for="Enabled">Enabled</label>
+            </div>
+            <div class="col-md-8 form-group">
+                <input class="form-check-input" asp-for="Enabled" id="Enabled" />
+                <span asp-validation-for="Enabled"></span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-end">
+        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

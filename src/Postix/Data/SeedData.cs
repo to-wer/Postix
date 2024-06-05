@@ -42,7 +42,7 @@ public static class SeedData
         return user.Id;
     }
 
-    private static async Task<IdentityResult> EnsureRole(IServiceProvider serviceProvider,
+    private static async Task EnsureRole(IServiceProvider serviceProvider,
         string uid, string role)
     {
         var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
@@ -55,9 +55,7 @@ public static class SeedData
 
         if (user == null) throw new ArgumentException("The testUserPw password was probably not strong enough!");
 
-        var ir = await userManager.AddToRoleAsync(user, role);
-
-        return ir;
+        await userManager.AddToRoleAsync(user, role);
     }
 
     private static async Task SetupTestDbAsync(VmailDbContext vmailDbContext, CancellationToken cancellationToken = default)
